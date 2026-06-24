@@ -1,0 +1,122 @@
+[project]
+name = "rectified-flow-pytorch"
+version = "0.10.8"
+description = "Rectified Flow in Pytorch"
+authors = [
+    { name = "Phil Wang", email = "lucidrains@gmail.com" }
+]
+readme = "README.md"
+requires-python = ">= 3.10"
+license = { file = "LICENSE" }
+keywords = [
+    'artificial intelligence',
+    'deep learning',
+    'rectified flow'
+  ]
+classifiers=[
+    'Development Status :: 4 - Beta',
+    'Intended Audience :: Developers',
+    'Topic :: Scientific/Engineering :: Artificial Intelligence',
+    'License :: OSI Approved :: MIT License',
+    'Programming Language :: Python :: 3.8',
+  ]
+
+dependencies = [
+    'accelerate',
+    'einx>=0.3.0',
+    'einops>=0.8.0',
+    "ema-pytorch>=0.5.2",
+    'hyper-connections>=0.1.8',
+    'pillow>=9.4.0',
+    "rotary-embedding-torch>=0.8.9",
+    'scipy',
+    'torch>=2.0',
+    'torch_einops_utils>=0.0.30',
+    'torchvision',
+    'torchdiffeq',
+    "x-transformers>=2.3.21",
+]
+
+[project.urls]
+Homepage = "https://pypi.org/project/rectified-flow-pytorch/"
+Repository = "https://codeberg.org/lucidrains/rectified-flow-pytorch"
+
+[project.optional-dependencies]
+examples = [
+    "datasets",
+]
+
+examples_ql = [
+    "assoc-scan",
+    "box2d-py",
+    "fire",
+    "gymnasium[box2d]>=1.0.0",
+    "moviepy>=1.0.3",
+    "numpy>=2.2.5",
+    "tqdm",
+    "x-mlps-pytorch>=0.0.20",
+]
+
+examples_fpo = [
+    "adam-atan2-pytorch",
+    "assoc-scan>=0.0.2",
+    "discrete-continuous-embed-readout",
+    "box2d-py",
+    "einx>=0.3.0",
+    "einops>=0.8.0",
+    "ema-pytorch>=0.7.3",
+    "fire",
+    "lion-pytorch",
+    "hl-gauss-pytorch>=0.1.15",
+    "hyper-connections>=0.2.0",
+    "gymnasium[box2d]>=1.0.0",
+    "moviepy>=1.0.3",
+    "numpy>=2.2.5",
+    "torch>=2.4",
+    "tqdm",
+    "x-transformers>=2.3.21",
+]
+
+test = [
+    "pytest",
+    "discrete-continuous-embed-readout"
+]
+
+[tool.pytest.ini_options]
+pythonpath = [
+  "."
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/rectified_flow_pytorch",
+    "/pyproject.toml",
+    "/LICENSE",
+    "/README.md"
+]
+
+exclude = [
+    "/tests",
+    "/*test*.py",
+    "/.gitignore"
+]
+
+[tool.hatch.build]
+exclude = [
+  "/*.py",
+  "/tests",
+  "/.gitignore",
+  "/*.sh",
+  "/*.gif",
+  "/data"
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["rectified_flow_pytorch"]
